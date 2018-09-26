@@ -14,11 +14,11 @@ The core functionality is:
 
 ## Assignment
 
-* [ ] Create an ERD for core functionality above
-* [ ] Create API definitions for the all the endpoints needed. This should include urls, params, body, and return types. 
+* [x] Create an ERD for core functionality above
+* [x] Create API definitions for the all the endpoints needed. This should include urls, params, body, and return types. 
 * [ ] Start building out the API
 
 ## Links
 
-* [ ] [ERD](https://www.github.com/chris-packett/suncoast-overflow "ERD")
-* [ ] [API Definitions](https://www.github.com/chris-packett/suncoast-overflow "API Definitions")
+* [ ] ![ERD](ERD.jpg)
+* [ ] [API Definitions](https://github.com/chris-packett/suncoast-overflow/blob/master/api_definitions.md "API Definitions")
