@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import Question from './Question'
 
 class QuestionList extends Component {
     constructor(props) {
@@ -30,19 +31,7 @@ class QuestionList extends Component {
                     {this.state.questions.map(question => {
                         return (
                             <div key={question.id} className="col-md-8 mx-auto">
-                                <div className="card mb-4 shadow-sm">
-                                    <div className="card-body">
-                                        <div className="mb-2">
-                                            {question.title}
-                                        </div>
-                                        <div className="d-flex justify-content-between align-items-end">
-                                            <div>
-                                                asked on <span>09/28/18</span> by <span>{question.createdBy}</span>
-                                            </div>
-                                            <button className="btn btn-primary btn-sm float-right">View Answers</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Question question={question} />
                             </div>
                         )
                     })}
