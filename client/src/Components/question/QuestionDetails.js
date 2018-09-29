@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import AnswerList from '../answer/AnswerList'
 
 class QuestionDetails extends Component {
     constructor(props) {
@@ -7,12 +8,14 @@ class QuestionDetails extends Component {
         this.state = {
             question: {},
             isUpvoted: false,
-            isDownvoted: false
+            isDownvoted: false,
+            answers: []
         }
     }
     
     componentDidMount() {
         this.getQuestionData()
+        this.getAnswersData()
     }
     
     getQuestionData = () => {
@@ -23,6 +26,17 @@ class QuestionDetails extends Component {
                 question: questionData.results
             })
         })
+    }
+
+    getAnswersData = () => {
+        fetch(`https://localhost:5001/api/posts/questions/${this.props.match.params.id}/answers`)
+        .then(resp => resp.json())
+        .then(answersData => {
+            console.log(answersData.results)
+            this.setState({
+                answers: answersData.results
+            })
+        }) 
     }
 
     handleQuestionVoteClickEvent = (voteType) => {
@@ -94,7 +108,7 @@ class QuestionDetails extends Component {
                         </Link>
                     </div>
                 </div>
-                <hr className="w-80" />
+                <AnswerList questionId={this.state.question.id} answers={this.state.answers} />
             </div>
         );
     }

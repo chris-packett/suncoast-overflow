@@ -38,7 +38,6 @@ class CreateQuestionForm extends Component {
                 body: ""
             })
         })
-
     }
 
     render() {
