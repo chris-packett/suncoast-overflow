@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AnswerList from '../answer/AnswerList'
+import CreateAnswerForm from '../answer/CreateAnswerForm';
 
 class QuestionDetails extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class QuestionDetails extends Component {
     componentDidMount() {
         this.getQuestionData()
         this.getAnswersData()
+        window.scrollTo(0, 0)
     }
     
     getQuestionData = () => {
@@ -109,6 +111,7 @@ class QuestionDetails extends Component {
                     </div>
                 </div>
                 <AnswerList questionId={this.state.question.id} answers={this.state.answers} />
+                <CreateAnswerForm questionId={this.state.question.id} />
             </div>
         );
     }

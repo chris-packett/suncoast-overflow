@@ -4,7 +4,6 @@ class CreateAnswerForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            questionId: props.questionId,
             body: ""
         }
     }
@@ -20,10 +19,10 @@ class CreateAnswerForm extends Component {
         let answerData = {
             "Content": this.state.body,
             "CreatedBy": "anonymous",
-            "QuestionId": this.state.questionId
+            "QuestionId": this.props.questionId
         }
 
-        fetch(`https://localhost:5001/api/posts/questions/${this.state.questionId}/answers/add`, {
+        fetch(`https://localhost:5001/api/posts/questions/${this.props.questionId}/answers/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
