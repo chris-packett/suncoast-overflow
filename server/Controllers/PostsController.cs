@@ -40,6 +40,22 @@ namespace server.Controllers
             return _rv;
         }
 
+        //GET api/posts/questions/{id}
+        [HttpGet]
+        [Route("questions/{id}")]
+        public ActionResult<ResponseObject> Get(int id)
+        {
+            var _question = this.db.Questions.FirstOrDefault(f => f.Id == id);
+
+            var _rv = new ResponseObject
+            {
+                WasSuccessful = true,
+                Results = _question
+            };
+            
+            return _rv;
+        }
+
         //POST api/posts/questions/add
         [HttpPost]
         [Route("questions/add")]
@@ -54,6 +70,62 @@ namespace server.Controllers
             };
 
             this.db.Questions.Add(_question);
+
+            this.db.SaveChanges();
+
+            var _rv = new ResponseObject
+            {
+                WasSuccessful = true,
+                Results = _question
+            };
+
+            return _rv;
+        }
+
+        //PATCH api/posts/questions/{id}/{voteType}
+        [HttpPatch]
+        [Route("questions/{id}/{voteType}")]
+        public ActionResult<ResponseObject> Vote(int id, string voteType)
+        {
+            var _question = this.db.Questions.FirstOrDefault(f => f.Id == id);
+
+            switch (voteType)
+            {
+                case "upvote":
+                    _question.UpvoteCount++;
+                    break;
+                case "downvote":
+                    _question.DownvoteCount++;
+                    break;
+            }
+
+            this.db.SaveChanges();
+
+            var _rv = new ResponseObject
+            {
+                WasSuccessful = true,
+                Results = _question
+            };
+
+            return _rv;
+        }
+
+        //PATCH api/posts/questions/{id}/{voteType}
+        [HttpPatch]
+        [Route("questions/{id}/{voteType}/undo")]
+        public ActionResult<ResponseObject> UndoVote(int id, string voteType)
+        {
+            var _question = this.db.Questions.FirstOrDefault(f => f.Id == id);
+
+            switch (voteType)
+            {
+                case "upvote":
+                    _question.UpvoteCount--;
+                    break;
+                case "downvote":
+                    _question.DownvoteCount--;
+                    break;
+            }
 
             this.db.SaveChanges();
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 class Question extends Component {
@@ -19,9 +20,9 @@ class Question extends Component {
                         <div>
                             asked <span>{this.getFormattedDate()}</span> by <span>{question.createdBy}</span>
                         </div>
-                        <button className="btn btn-primary btn-sm float-right">
+                        <Link to={`/question/${question.id}/details`} className="btn btn-primary btn-sm float-right">
                             View Answers
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
