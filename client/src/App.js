@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Navbar from './Components/layout/Navbar'
+import SideNav from './Components/layout/SideNav'
 import QuestionList from './Components/question/QuestionList'
 import QuestionDetails from './Components/question/QuestionDetails';
 import CreateQuestionForm from './Components/question/CreateQuestionForm'
@@ -12,6 +13,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
+          <SideNav />
           <Switch>
             <Route exact path="/" component={QuestionList} />
             <Route exact path="/question/:id/details" component={QuestionDetails}/>
