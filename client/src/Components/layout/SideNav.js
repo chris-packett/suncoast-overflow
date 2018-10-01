@@ -3,23 +3,23 @@ import React, { Component } from 'react';
 class SideNav extends Component {
     render() {
         return (
-            <div className="SideNav">
+            <div className="side-nav">
                 <nav>
-                <section className="Sidecontent">
+                    <section className="side-content">
                         <section>
-                            <h2 className="homelink"> Home </h2>
+                            <h6 className="home-link">Home</h6>
                         </section>
-                        <h3 className="sidenavlinks"> PUBLIC </h3>
-                        <h4 className="sidenavlinks"> StackOverflow </h4>
-                        <h4 className="sidenavlinks"> Tags </h4>
-                        <h4 className="sidenavlinks"> Users </h4>
-                        <h4 className="sidenavlinks"> Jobs </h4>
-                        <section className="teamsqa">
-                            <h2 className="teamlink"> Teams</h2>
-                            <h4 className="sidenavlinks"> Q&A for work</h4>
+                        <h6 className="side-nav-links">PUBLIC</h6>
+                        <h6 className="side-nav-links">StackOverflow</h6>
+                        <h6 className="side-nav-links">Tags</h6>
+                        <h6 className="side-nav-links">Users</h6>
+                        <h6 className="side-nav-links">Jobs</h6>
+                        <section className="teams-qa">
+                            <h4 className="team-link">Teams</h4>
+                            <h6 className="side-nav-links">Q&A for work</h6>
                             <button> Learn More </button>
                         </section>
-                        </section>
+                    </section>
                 </nav>
             </div>
         );

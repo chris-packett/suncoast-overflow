@@ -87,9 +87,9 @@ class QuestionDetails extends Component {
         })
     }
 
-    render() {        
+    render() {  
         return (
-            <div className="p-5">
+            <div className="p-5" id="question-details-page">
                 <div className="d-flex justify-content-around">
                     <h3>{this.state.question.title}</h3>
                     <Link to="/question/add" className="btn btn-primary btn-md align-self-center">Ask Question</Link>

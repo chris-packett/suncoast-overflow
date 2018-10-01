@@ -48,7 +48,7 @@ class QuestionList extends Component {
 
     render() {
         return (
-            <div>
+            <div className="question-list-page">
                 <div className="d-flex justify-content-around mb-4">
                     <h2>{this.state.header}</h2>
                     <Link to="/question/add" className="btn btn-primary btn-lg align-self-center">Ask a Question</Link>
