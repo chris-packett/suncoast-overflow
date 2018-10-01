@@ -42,7 +42,7 @@ class CreateQuestionForm extends Component {
 
     render() {
         return (
-            <div className="p-4">
+            <div className="p-4" id="create-question-form-page">
                 <div className="mb-4 text-center m-5">
                     <h2>Ask a Question</h2>
                 </div>
