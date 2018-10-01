@@ -5,8 +5,9 @@
 .navbar {
     display: flex;
     background-color: #FAFAFB;
-    height: 8%;
+    height: 3em;
     width: 100%;
+    border: .02em solid rgb(161, 161, 161);
 }
 
 .navbar-top {
@@ -26,17 +27,20 @@
     height: 100%;
     width: 20%;
     border: .02em solid rgb(161, 161, 161);
+    justify-content: center;
 }
 
 .side-content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    font-size: 16px;
 }
 
 .home-link {
     text-align: center;
     font-weight: bold;
+    font-size: 13px;
     padding: 1em;
     margin: 0;
 }
@@ -45,6 +49,7 @@
     text-align: center;
     padding: .5em;
     margin: 0;
+    font-size: 12px;
 }
 
 .teams-qa {
@@ -55,12 +60,14 @@
     border: .01em solid rgb(194, 194, 194);
     padding: .5em;
     margin-top: 1em;
-    width: 100%;
+    margin-left: 6.5em;
+    width: 60%;
 }
 
 .team-link {
     text-align: center;
     font-weight: bold;
+    font-size: 13px;
 }
 
 .question-list-page {
