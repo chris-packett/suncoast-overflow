@@ -14,7 +14,6 @@ class Navbar extends Component {
                     </Link>
                     <form className="form-inline">
                         <input className="form-control mr-sm-2" type="text" placeholder="Search..." />
-                        <button className="btn btn-outline-primary">Search</button>
                     </form>
                     <img src={navButtons} alt="nav-buttons" height="50" />
                 </nav>

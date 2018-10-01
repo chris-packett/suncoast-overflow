@@ -50,7 +50,7 @@ class CreateQuestionForm extends Component {
                     <div className="form-group col-sm-6">
                         <label htmlFor="title">Title</label>
                         <input type="text" className="form-control" 
-                            name="title" 
+                            name="title"
                             placeholder="What's your programming question? Be specific."
                             value={this.state.title} 
                             onChange={this.handleChange}
