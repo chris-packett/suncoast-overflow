@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom' 
+import Answer from './Answer'
 
-class AnswerList extends Component {  
+class AnswerList extends Component {
     render() {
         return (
             <div>
@@ -9,24 +9,7 @@ class AnswerList extends Component {
                 <hr className="w-80" />
                 {this.props.answers.map(answer => {
                     return (
-                        <div key={answer.id}>
-                            <div className="d-flex p-4">
-                                <div className="mr-4 d-flex flex-column align-items-center">
-                                    <button className="btn btn-outline-secondary btn-sm">^</button>
-                                    <strong>{answer.upvoteCount - answer.downvoteCount}</strong>
-                                    <button className="btn btn-outline-secondary btn-sm">v</button>
-                                </div>
-                                <div>
-                                    <p>
-                                        {answer.content}
-                                    </p>
-                                    <Link to="/">
-                                        <u className="text-secondary">edit</u>
-                                    </Link>
-                                </div>
-                            </div>
-                            <hr className="w-80" />
-                        </div>
+                        <Answer key={answer.id} answer={answer} questionId={this.props.questionId} />
                     )
                 })}
             </div>

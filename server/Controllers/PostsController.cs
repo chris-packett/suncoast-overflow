@@ -61,7 +61,7 @@ namespace server.Controllers
         [Route("questions/{id}/answers")]
         public ActionResult<ResponseObject> GetAllAnswers(int id)
         {
-            var _answers = this.db.Answers.OrderByDescending(o => o.CreatedOn);
+            var _answers = this.db.Answers.Where(w => w.QuestionId == id).OrderByDescending(o => o.CreatedOn);
 
             var _rv = new ResponseObject
             {
@@ -128,7 +128,7 @@ namespace server.Controllers
         //PATCH api/posts/questions/{id}/{voteType}
         [HttpPatch]
         [Route("questions/{id}/{voteType}")]
-        public ActionResult<ResponseObject> Vote(int id, string voteType)
+        public ActionResult<ResponseObject> QuestionVote(int id, string voteType)
         {
             var _question = this.db.Questions.FirstOrDefault(f => f.Id == id);
 
@@ -153,10 +153,10 @@ namespace server.Controllers
             return _rv;
         }
 
-        //PATCH api/posts/questions/{id}/{voteType}
+        //PATCH api/posts/questions/{id}/{voteType}/undo
         [HttpPatch]
         [Route("questions/{id}/{voteType}/undo")]
-        public ActionResult<ResponseObject> UndoVote(int id, string voteType)
+        public ActionResult<ResponseObject> UndoQuestionVote(int id, string voteType)
         {
             var _question = this.db.Questions.FirstOrDefault(f => f.Id == id);
 
@@ -176,6 +176,66 @@ namespace server.Controllers
             {
                 WasSuccessful = true,
                 Results = _question
+            };
+
+            return _rv;
+        }
+
+        //PATCH api/posts/questions/{question_id}/answers/{answer_id}/{voteType}
+        [HttpPatch]
+        [Route("questions/{question_id}/answers/{answer_id}/{voteType}")]
+        public ActionResult<ResponseObject> AnswerVote(int question_id, int answer_id, string voteType)
+        {
+            var _answer = this.db.Answers
+                .Where(w => w.QuestionId == question_id)
+                .FirstOrDefault(f => f.Id == answer_id);
+
+            switch (voteType)
+            {
+                case "upvote":
+                    _answer.UpvoteCount++;
+                    break;
+                case "downvote":
+                    _answer.DownvoteCount++;
+                    break;
+            }
+
+            this.db.SaveChanges();
+
+            var _rv = new ResponseObject
+            {
+                WasSuccessful = true,
+                Results = _answer
+            };
+
+            return _rv;
+        }
+
+        //PATCH api/posts/questions/{question_id}/answers/{answer_id}/{voteType}/undo
+        [HttpPatch]
+        [Route("questions/{question_id}/answers/{answer_id}/{voteType}/undo")]
+        public ActionResult<ResponseObject> UndoAnswerVote(int question_id, int answer_id, string voteType)
+        {
+            var _answer = this.db.Answers
+            .Where(w => w.QuestionId == question_id)
+            .FirstOrDefault(f => f.Id == answer_id);
+
+            switch (voteType)
+            {
+                case "upvote":
+                    _answer.UpvoteCount--;
+                    break;
+                case "downvote":
+                    _answer.DownvoteCount--;
+                    break;
+            }
+
+            this.db.SaveChanges();
+
+            var _rv = new ResponseObject
+            {
+                WasSuccessful = true,
+                Results = _answer
             };
 
             return _rv;
